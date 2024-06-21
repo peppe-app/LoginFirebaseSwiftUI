@@ -5,6 +5,8 @@ final class LoginViewModel {
     var email: String = ""
     var password: String = ""
     
+    private(set) var isLoading = false
+    
     private var authManager: AuthManager?
     
     var canLogin: Bool {
@@ -19,7 +21,13 @@ final class LoginViewModel {
         guard canLogin else { return }
         guard let authManager else { return }
         
+        isLoading.toggle()
+        
         Task {
+            defer {
+                isLoading.toggle()
+            }
+            
             do {
                 _ = try await authManager.signIn(email: email, password: password)
             } catch {
@@ -45,10 +53,14 @@ struct LoginView: View {
                 }
                 
                 Section {
-                    Button("Login") {
-                        viewModel.login()
+                    if viewModel.isLoading {
+                        ProgressView()
+                    } else {
+                        Button("Login") {
+                            viewModel.login()
+                        }
+                        .disabled(!viewModel.canLogin)
                     }
-                    .disabled(!viewModel.canLogin)
                 } footer: {
                     NavigationLink {
                         SignupView()

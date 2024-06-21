@@ -6,6 +6,8 @@ final class SignupViewModel {
     var password: String = ""
     var rePassword: String = ""
     
+    private(set) var isLoading = false
+    
     private var authManager: AuthManager?
     
     var canSignup: Bool {
@@ -23,7 +25,13 @@ final class SignupViewModel {
         guard canSignup else { return }
         guard let authManager else { return }
         
+        isLoading.toggle()
+        
         Task {
+            defer {
+                isLoading.toggle()
+            }
+            
             do {
                 let _ = try await authManager.signup(email: email, password: password)
             } catch {
@@ -49,10 +57,14 @@ struct SignupView: View {
             }
             
             Section {
-                Button("Signup") {
-                    viewModel.signup()
+                if viewModel.isLoading {
+                    ProgressView()
+                } else {
+                    Button("Signup") {
+                        viewModel.signup()
+                    }
+                    .disabled(!viewModel.canSignup)
                 }
-                .disabled(!viewModel.canSignup)
             }
         }
         .navigationTitle("Signup")
