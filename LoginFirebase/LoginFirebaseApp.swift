@@ -8,6 +8,12 @@ struct LoginFirebaseApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.authProvider, FirebaseAuthProvider())
+                .environment({
+                    let auth = AuthManager()
+                    auth.setup(provider: FirebaseAuthProvider())
+                    return auth
+                }())
         }
     }
 }

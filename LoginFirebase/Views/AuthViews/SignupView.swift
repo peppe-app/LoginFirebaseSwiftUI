@@ -6,6 +6,8 @@ final class SignupViewModel {
     var password: String = ""
     var rePassword: String = ""
     
+    private var authManager: AuthManager?
+    
     var canSignup: Bool {
         !email.isEmpty
         && !password.isEmpty
@@ -13,36 +15,56 @@ final class SignupViewModel {
         && password == rePassword
     }
     
-    func login() {
+    func setup(authManager auth: some AuthManager) {
+        authManager = auth
+    }
+    
+    func signup() {
         guard canSignup else { return }
+        guard let authManager else { return }
+        
+        Task {
+            do {
+                let _ = try await authManager.signup(email: email, password: password)
+            } catch {
+                
+            }
+        }
     }
 }
 
 struct SignupView: View {
     
+    @Environment(AuthManager.self) var auth
     @State private var viewModel = SignupViewModel()
     
     var body: some View {
         Form {
             Section {
                 TextField("Email", text: $viewModel.email)
+                    .keyboardType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                 SecureField("Password", text: $viewModel.password)
                 SecureField("Repeat Password", text: $viewModel.rePassword)
             }
             
             Section {
                 Button("Signup") {
-                    viewModel.login()
+                    viewModel.signup()
                 }
                 .disabled(!viewModel.canSignup)
             }
         }
         .navigationTitle("Signup")
+        .onAppear {
+            viewModel.setup(authManager: auth)
+        }
     }
 }
 
 #Preview {
     NavigationStack {
         SignupView()
+            .environment(AuthManager.demo)
     }
 }

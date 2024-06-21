@@ -17,6 +17,8 @@
 		748AF9E72C1EADC000DB48A3 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748AF9E62C1EADC000DB48A3 /* SignupView.swift */; };
 		748AF9ED2C1EAEDA00DB48A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748AF9EC2C1EAEDA00DB48A3 /* SettingsView.swift */; };
 		748AF9F02C1EAF2E00DB48A3 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748AF9EF2C1EAF2E00DB48A3 /* HomeView.swift */; };
+		748AF9F92C1EB2A700DB48A3 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748AF9F82C1EB2A700DB48A3 /* AuthProvider.swift */; };
+		748AF9FE2C1EB41500DB48A3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748AF9FD2C1EB41500DB48A3 /* AuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		748AF9E62C1EADC000DB48A3 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		748AF9EC2C1EAEDA00DB48A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		748AF9EF2C1EAF2E00DB48A3 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		748AF9F82C1EB2A700DB48A3 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		748AF9FD2C1EB41500DB48A3 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +89,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		748AF9E12C1EAC4B00DB48A3 /* LoginView */ = {
+		748AF9E12C1EAC4B00DB48A3 /* AuthViews */ = {
 			isa = PBXGroup;
 			children = (
+				748AF9E62C1EADC000DB48A3 /* SignupView.swift */,
 				748AF9E32C1EAC6000DB48A3 /* LoginView.swift */,
 			);
-			path = LoginView;
+			path = AuthViews;
 			sourceTree = "<group>";
 		};
 		748AF9E22C1EAC5200DB48A3 /* Views */ = {
@@ -98,18 +103,9 @@
 			children = (
 				748AF9EE2C1EAF2300DB48A3 /* HomeView */,
 				748AF9EB2C1EAEC500DB48A3 /* SettingsView */,
-				748AF9E82C1EADC400DB48A3 /* SignupView */,
-				748AF9E12C1EAC4B00DB48A3 /* LoginView */,
+				748AF9E12C1EAC4B00DB48A3 /* AuthViews */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		748AF9E82C1EADC400DB48A3 /* SignupView */ = {
-			isa = PBXGroup;
-			children = (
-				748AF9E62C1EADC000DB48A3 /* SignupView.swift */,
-			);
-			path = SignupView;
 			sourceTree = "<group>";
 		};
 		748AF9EB2C1EAEC500DB48A3 /* SettingsView */ = {
@@ -131,6 +127,7 @@
 		748AF9F12C1EB08200DB48A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				748AF9FD2C1EB41500DB48A3 /* AuthManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +135,7 @@
 		748AF9F22C1EB08800DB48A3 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				748AF9F82C1EB2A700DB48A3 /* AuthProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -223,6 +221,8 @@
 				748AF9E72C1EADC000DB48A3 /* SignupView.swift in Sources */,
 				748AF9E42C1EAC6000DB48A3 /* LoginView.swift in Sources */,
 				748AF9F02C1EAF2E00DB48A3 /* HomeView.swift in Sources */,
+				748AF9F92C1EB2A700DB48A3 /* AuthProvider.swift in Sources */,
+				748AF9FE2C1EB41500DB48A3 /* AuthManager.swift in Sources */,
 				748AF9D02C1EA87B00DB48A3 /* ContentView.swift in Sources */,
 				748AF9CE2C1EA87B00DB48A3 /* LoginFirebaseApp.swift in Sources */,
 			);
